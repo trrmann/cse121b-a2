@@ -1,0 +1,2 @@
+C:\Users\p40007y\source\repos\trrmann\cse121b-a2\obj\Debug\cse121b-a2.esproj.SuggestedBindingRedirects.cache
+C:\Users\p40007y\source\repos\trrmann\cse121b-a2\obj\Debug\cse121b-a2.esproj.CoreCompileInputs.cache
