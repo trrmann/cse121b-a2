@@ -1,6 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\W01",
+    "\\W02"
   ],
   "PreviewInSolutionExplorer": false
 }
