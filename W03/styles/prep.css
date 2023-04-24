@@ -1,0 +1,71 @@
+/* Class Selectors */
+/*<li class=\"task\"><ul class=\"taskAttributes\">detail text<input type=\"button\" value=\"complete\" class=\"taskButton\"></li>*/
+.todos {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    border: 0px;
+    border-style: none;
+    padding-left: 2em;
+    width: 300px;
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/*.todos p {
+    margin: 0;
+}*/
+
+.todos span {
+    cursor: pointer;
+}
+
+.todos li.task {
+    grid-column: 1;
+    margin-top: .5em;
+    margin-bottom: .5em;
+    border: 0px;
+    border-style: none;
+    padding: 0px;
+    width: 1fr;
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.todos li.task ul.taskAttributes {
+    grid-column: 1;
+    margin: 0px;
+    border: 0px;
+    border-style: none;
+    padding: 0px;
+    width: 1fr;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style-type: none;
+}
+
+li.taskDesc {
+    grid-column: 1,3;
+
+}
+
+input.taskbutton {
+    grid-column: 4;
+}
+
+input.copyButton {
+    grid-column: 5;
+}
+
+input.editButton {
+    grid-column: 6;
+}
+
+.strike {
+    text-decoration: line-through;
+    color: gray;
+}
