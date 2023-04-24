@@ -86,12 +86,18 @@ document.querySelector('#year').innerHTML = year;
 /* ARRAY METHODS */
 
 // Step 1: Declare and instantiate an array variable to hold the numbers 1 through 25
+const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25];
 
 // Step 2: Assign the value of the array variable to the HTML element with an ID of "array"
+document.querySelector('#array').innerHTML = array;
 
 // Step 3: Use the filter array method to find all of the odd numbers of the array variable and assign the reult to the HTML element with an ID of "odds" ( hint: % (modulus operartor) )
+const validateOdd = (number) => { return number % 2 == 1};
+document.querySelector('#odds').innerHTML = array.filter(validateOdd);
 
 // Step 4: Use the filter array method to find all of the even numbers of the array variable and assign the result to the HTML element with an ID of "evens"
+const validateEven = (number) => { return number % 2 == 0};
+document.querySelector('#evens').innerHTML = array.filter(validateEven);
 
 // Step 5: Use the reduce array method to sum the array variable elements and assign the result to the HTML element with an ID of "sumOfArray"
 
