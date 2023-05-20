@@ -23,9 +23,18 @@ function doStuff(data) {
 
 function doStuffList(data) {
     elementList = document.querySelector("#outputList")
-    pokeList = data.results;
+    pokeList = sortPokemon(data.results);
     const pokeArray = pokeList.map((poke) => {const liElement = document.createElement("li"); liElement.innerText = poke.name;return liElement});
     pokeArray.map((element) => {elementList.appendChild(element)});
+}
+
+function sortPokemon(list) {
+    list.sort(comparePoke);
+    return list;
+}
+
+function comparePoke(a, b) {
+    return a.name.localeCompare(b.name);
 }
 
 getPokemon(url, doStuff);
