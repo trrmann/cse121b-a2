@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Manual Encryption Methods</title>
+    <link href="https://fonts.googleapis.com/css?family=Kalam&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul id="menu">
+                <li><a id="toggleMenu">&equiv;</a></li>
+                <li><a href="#" class="active">Home</a></li>
+                <li><a href="#">Topic A</a></li>
+                <li><a href="#">Topic B</a></li>
+            </ul>
+        </nav>
+        <h1>Manual Encryption Methods</h1>
+    </header>
+    <main>
+        <section>
+            <h2>
+                Today is <span id="dowMessage"></span>.
+            </h2>
+            <h3>
+                <span id="message"></span>
+            </h3>
+        </section>
+        <hr>
+        <section>
+            <h2 id="encryptionTitle"></h2>
+            <p>
+                Encrypt by: 
+                <select id="encryptBy">
+                    <option id="SimplePharaohsRod" value="SimplePharaohsRod">Simple Pharaoh's Rod</option>
+                    <option id="PharaohsRod" value="PharaohsRod">Pharaoh's Rod</option>
+                    <option id="SimpleSubstitution" value="SimpleSubstitution">Simple Substitution</option>
+                    <option id="5x5Matrex" value="5x5Matrex">5x5 Matrex</option>
+                    <option id="10x10Matrex" value="10x10Matrex">10x10 Matrex</option>
+                    <option id="BookPage10x10Matrex" value="BookPage10x10Matrex">Book Page 10x10 Matrex</option>
+                    <option id="BookTable" value="BookTable">Book Table</option>
+                </select>
+            </p>
+            <div id="keyDiv">
+                <label for="key">Key:</label>
+                <input type="text" id="key" name="key">
+                <input type="button" id="encrypt" value="Encrypt">    
+            </div>
+            <p>
+                <label for="message">Message:</label>
+                <input type="text" id="message" name="message">    
+            </p>
+            <div id="encryptedResult">
+            </div>
+        </section>
+    </main>
+    <footer>
+        <nav>
+            <ul id="options">
+                <li><a id="toggleOptions">&equiv;</a></li>
+                <li><a href="#" class="active">Topic A</a></li>
+                <li><a href="#">Topic B</a></li>
+            </ul>
+        </nav>
+        &copy;<span id="year"></span> | Encyrption | Tracy R. Mann
+    </footer>
+    <script src="scripts/main.js"></script>
+    <script src="scripts/encryptionHomePage.js" type="module"></script>
+</body>
