@@ -39,10 +39,13 @@
             <p>
                 Sort by: 
                 <select id="sortBy">
-                    <option value="templeNameAscending">Temple Name Ascending</option>
-                    <option value="templeNameDescending">Temple Name Descending</option>
+                    <option id="templeNameAscending" value="templeNameAscending">Temple Name Ascending</option>
+                    <option id="templeNameDescending" value="templeNameDescending">Temple Name Descending</option>
                 </select>
             </p>
+            <label for="filter">Search for:</label>
+            <input type="text" id="filter" name="filter">
+            <input type="button" id="filterBy" value="Search">
             <div id="temples">
             </div>
         </section>
