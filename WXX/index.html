@@ -28,7 +28,7 @@
                 Today is <span id="dowMessage"></span>.
             </h2>
             <h3>
-                <span id="message"></span>
+                <span id="messageOut"></span>
             </h3>
         </section>
         <hr>
@@ -44,16 +44,14 @@
                     <option id="10x10Matrex" value="10x10Matrex">10x10 Matrex</option>
                     <option id="BookPage10x10Matrex" value="BookPage10x10Matrex">Book Page 10x10 Matrex</option>
                     <option id="BookTable" value="BookTable">Book Table</option>
+                    <option id="Enigma" value="Enigma">Enigma</option>
                 </select>
             </p>
             <div id="keyDiv">
-                <label for="key">Key:</label>
-                <input type="text" id="key" name="key">
-                <input type="button" id="encrypt" value="Encrypt">    
             </div>
             <p>
-                <label for="message">Message:</label>
-                <input type="text" id="message" name="message">    
+                <label for="messageIn">Message:</label>
+                <input type="text" id="messageIn" name="messageIn">    
             </p>
             <div id="encryptedResult">
             </div>
@@ -69,6 +67,7 @@
         </nav>
         &copy;<span id="year"></span> | Encyrption | Tracy R. Mann
     </footer>
+    <!--<script src="scripts/encryptionHomePage.js" type="module"></script>-->
+    <script type="module" src="scripts/encryptionHomePage.js"></script>
     <script src="scripts/main.js"></script>
-    <script src="scripts/encryptionHomePage.js" type="module"></script>
 </body>

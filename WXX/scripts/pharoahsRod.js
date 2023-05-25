@@ -1,15 +1,17 @@
-export function encrypt (array = ['1','2','3','4','5'], key=5) {
+function encrypt (string = "1234567890", key=new PharoahsRodKey(5)) {
+    let array = Array.from(string)
     let result = [];
     let tempIndex = 0;
     let base = 0;
     let temp = [];
+    let keyBase = key.getKey();
     array.forEach((element, index) => {
-        tempIndex = index / key;
-        base = index % key;
-        if(base==0) {
-            temp[index] = [];
+        tempIndex =  ~~(index / keyBase);
+        base = index % keyBase;
+        if(tempIndex==0) {
+            temp[base] = [];
         }
-        temp[tempIndex][base] = element;
+        temp[base][tempIndex] = element;
     });
     tempIndex = 0;
     temp.forEach((outerElement) => {
@@ -18,33 +20,66 @@ export function encrypt (array = ['1','2','3','4','5'], key=5) {
             tempIndex++;
         });
     });
-    return result;
+    return result.join('');
 }
 
-export function decrypt(array = ['1','2','3','4','5'], key=5) {
-    let tempIndex;
-    let temp = [];
-    let result = [];
-    let start = 0;
-    let end = 0;
-    let size = array.length/key;
-    let numberOfSizeOne = array.length%key;
-    for(tempIndex = 0; tempIndex < key; tempIndex++) {
-        if(tempIndex < numberOfSizeOne) {
-            end = start + size;
-        } else {
-            end = start + size - 1;
-        }
-        temp[tempIndex] = [];
-        array.slice(start, end).forEach((character, index) => {
-            temp[tempIndex][index] = character;
-        });
-        start = end + 1;
+function decrypt(string = "1234567890", key=new PharoahsRodKey(5)) {
+let index;
+let base;
+let array = Array.from(string)
+let tempIndex;
+let temp = [];
+let result = [];
+let start = 0;
+let end = 0;
+let keyBase = key.getKey();
+let size = ~~(array.length / keyBase);
+let numberOfSizeOne = array.length % keyBase;
+if(numberOfSizeOne==0) {
+    numberOfSizeOne = keyBase;
+}
+for(tempIndex = 0; tempIndex < keyBase; tempIndex++) {
+    if(tempIndex < numberOfSizeOne && numberOfSizeOne == keyBase) {
+        end = start + size;
+    } else if(tempIndex < numberOfSizeOne) {
+        end = start + size + 1;
+    } else {
+        end = start + size;
     }
-    for(tempIndex = 0; tempIndex < array.length; tempIndex++) {
-        index = tempIndex / key;
-        base = tempIndex % key;
-        result[tempIndex] = temp[index][base];
+    temp[tempIndex] = [];
+    array.slice(start, end).forEach((character, index) => {
+        temp[tempIndex][index] = character;
+    });
+    start = end;
+}
+for(tempIndex = 0; tempIndex < array.length; tempIndex++) {
+    index = ~~(tempIndex / keyBase);
+    base = tempIndex % keyBase;
+    result[tempIndex] = temp[base][index];
+}
+return result.join('');
+}
+
+export class PharoahsRodKey {
+    getKey() {
+        return this.size;
     }
-    return result;
+    setKey(size) {
+        this.size = size;
+    }
+    constructor(size) {
+        this.setKey(size);
+    }
+}
+
+export class PharoahsRod {
+    constructor(key) {
+        this.key = key;
+    }
+    encrypt(message){
+        return encrypt(message, this.key);
+    }
+    decrypt(message){
+        return decrypt(message, this.key);
+    }
 }
