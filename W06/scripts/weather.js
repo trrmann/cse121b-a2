@@ -4,35 +4,39 @@
 //https://brightsky.dev/docs/#get-/weather
 
 function buildUSWeatherServiceURL(lattitude, longitude) {
-    return "https://api.weather.gov/points/"+lattitude.toString()+","+longitude.toString();
+    //return "https://api.weather.gov/points/"+lattitude.toString()+","+longitude.toString();
+    return "http://api.weatherapi.com/v1/current.json?key=7da1ffc79fbe42ac9d2204756232405&q="+lattitude.toString()+","+longitude.toString()+"&aqi=no";
 }
 
-function buildDEWeatherServiceURL(lattitude, longitude, date) {
-    return "https://api.brightsky.dev/weather?date="+date.toString()+"&lat="+lattitude.toString()+"&lon="+longitude.toString();
-}
+/*function buildDEWeatherServiceURL(lattitude, longitude, date) {
+    //return "https://api.brightsky.dev/weather?date="+date.toString()+"&lat="+lattitude.toString()+"&lon="+longitude.toString();
+    return "http://api.weatherapi.com/v1/current.json?key=7da1ffc79fbe42ac9d2204756232405&q="+lattitude.toString()+","+longitude.toString()+"&aqi=no";
+}*/
 
-function parseForcastURL(response) {
-    return response.properties.forcastOffice;
-}
+//function parseForcastURL(response) {
+//    return response.properties.forcastOffice;
+//}
 
 async function requestWeatherService(weather, location, callBackFunction) {
     let url;
-    let obj;
+    //let obj;
     let isUS = location.isUS();
-    if(isUS) {
+    //if(isUS) {
         url = weather.getUSWeatherServiceURL();
+        /*
         obj = {
             headers: {
                 'User-Agent': "tracy.mann!@retailbusinessservices.com"
             }
-        };
-    } else if(location.isDE()) {
-        url = weather.getDEWeatherServiceURL();
-    } else {
-        url="";
-    }
+        };*/
+    //} else if(location.isDE()) {
+    //    url = weather.getDEWeatherServiceURL();
+    //} else {
+    //    url="";
+    //}
     if(url!="") {
-        const response = await fetch(url, obj);
+        //const response = await fetch(url, obj);
+        const response = await fetch(url);
         if (response.ok) {
             const data = await response.json();
             callBackFunction(location, isUS, data);
@@ -44,6 +48,7 @@ async function requestWeatherService(weather, location, callBackFunction) {
     }
 }
 
+/*
 async function requestForecast(weather, url, callBackFunction) {
     if(url!="") {
         const response = await fetch(url);
@@ -56,23 +61,23 @@ async function requestForecast(weather, url, callBackFunction) {
     } else {
         weather.setFailWeatherResponse(location, url);
     }
-}
+}*/
 
 export class Weather {
     updateWeather(location, isUS, data) {
-        if(isUS) {
+        //if(isUS) {
             this.temp;
             this.windSpeed;
             this.windDirection;
             this.humidity;
             this.condition;
-        } else {
+        /*} else {
             this.temp;
             this.windSpeed;
             this.windDirection;
             this.humidity;
             this.condition;
-        }
+        }*/
         location.updateWeather({
             temp : this.temp,
             windSpeed : this.windSpeed,
@@ -90,14 +95,14 @@ export class Weather {
         return parseForcastURL(response);
     }
     recieveWeatherService(location, isUS, data) {
-        if(isUS) {
-            this.weatherServiceRecieved = true;
-            requestForecast(this, this.getForcastURL(data), this.recieveForecast);
-        } else {
+        //if(isUS) {
+        //    this.weatherServiceRecieved = true;
+        //    requestForecast(this, this.getForcastURL(data), this.recieveForecast);
+        //} else {
             this.weatherForecastRecieved = true;
             this.weatherServiceRecieved = true;
             this.updateWeather(location, isUS, data);
-        }
+        //}
     }
     recieveForecast(data) {
         this.weatherServiceRecieved = true;
