@@ -88,7 +88,10 @@ function recieveWeather(document, ids, data) {
     } else if(data.weather.weatherFail) {
         document.querySelector(`#${ids.weather}`).innerText = "Weather service not available!";
     } else {
-        document.querySelector(`#${ids.weather}`).innerText = "Display Data...";
+        let icon = document.createElement("img")
+        icon.src = data.weather.conditionIcon
+        document.querySelector(`#${ids.weather}`).innerText = data.weather.condition +" and " +data.weather.temp +"F, Wind:  "+data.weather.windSpeed+"mph "+data.weather.windDirection;
+        document.querySelector(`#${ids.weather}`).appendChild(icon);
     }
 }
 

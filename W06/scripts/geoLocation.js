@@ -96,8 +96,7 @@ export class Location {
             windDirection : this.windDirection,
             humidity : this.humidity,
             condition : this.condition,
-            weatherFail:this.weatherFail,
-            unsupportedCountry:this.unsupportedCountry
+            weatherFail:this.weatherFail
         }*/
         this.weatherFail = false;
         this.weather = weatherObj;
